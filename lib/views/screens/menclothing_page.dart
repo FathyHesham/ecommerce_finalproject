@@ -46,7 +46,7 @@ class _MenClothingState extends State<MenClothing> {
                           icon: const Icon(Icons.arrow_back_ios_new_outlined),
                         ),
                         const SizedBox(
-                          width: 75,
+                          width: 59,
                         ),
                         SizedBox(
                           width: 150.0,
@@ -71,7 +71,7 @@ class _MenClothingState extends State<MenClothing> {
                           ),
                         ),
                         const SizedBox(
-                          width: 40,
+                          width: 10,
                         ),
                         IconButton(
                           onPressed: () {
@@ -79,6 +79,14 @@ class _MenClothingState extends State<MenClothing> {
                           },
                           icon: const Icon(Icons.favorite),
                           color: Colors.red,
+                          iconSize: 30,
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.search,
+                            color: Colors.black,
+                          ),
                           iconSize: 30,
                         ),
                         IconButton(

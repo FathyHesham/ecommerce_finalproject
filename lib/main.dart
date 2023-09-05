@@ -34,8 +34,7 @@ class ECommerce extends StatefulWidget {
   State<ECommerce> createState() => _ECommerceState();
 }
 
-class _ECommerceState extends State<ECommerce> with TickerProviderStateMixin {
-  @override
+class _ECommerceState extends State<ECommerce> with TickerProviderStateMixin {  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: navigatorKey,

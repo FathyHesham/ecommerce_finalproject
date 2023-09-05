@@ -44,7 +44,7 @@ class _JeweleryState extends State<Jewelery> {
                       icon: const Icon(Icons.arrow_back_ios_new_outlined),
                     ),
                     const SizedBox(
-                      width: 105,
+                      width: 70,
                     ),
                     SizedBox(
                       width: 130.0,
@@ -69,7 +69,7 @@ class _JeweleryState extends State<Jewelery> {
                       ),
                     ),
                     const SizedBox(
-                      width: 30,
+                      width: 10,
                     ),
                     IconButton(
                       onPressed: () {
@@ -77,6 +77,14 @@ class _JeweleryState extends State<Jewelery> {
                       },
                       icon: const Icon(Icons.favorite),
                       color: Colors.red,
+                      iconSize: 30,
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.search,
+                        color: Colors.black,
+                      ),
                       iconSize: 30,
                     ),
                     IconButton(

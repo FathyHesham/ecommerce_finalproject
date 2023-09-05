@@ -67,6 +67,14 @@ class _HomePageState extends State<HomePage> {
                             ),
                             IconButton(
                               onPressed: () {},
+                              icon: const Icon(
+                                Icons.search,
+                                color: Color(0xffffe4c4),
+                              ),
+                              iconSize: 30,
+                            ),
+                            IconButton(
+                              onPressed: () {},
                               icon: const Icon(Icons.shopping_cart),
                               color: const Color(0xffffe4c4),
                               iconSize: 30,
