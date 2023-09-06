@@ -30,7 +30,6 @@ class OrderItem {
   int? quantity;
   double? price;
   Product? product;
-  DateTime? date;
 
   OrderItem();
 
@@ -38,7 +37,6 @@ class OrderItem {
     userID = JsonDate['userID'];
     quantity = JsonDate['quantity'];
     price = JsonDate['price'];
-    date = JsonDate['date'];
     product = Product.fromJson(JsonDate['product']);
   }
 
@@ -46,7 +44,6 @@ class OrderItem {
         "userID": userID,
         "quantity": quantity,
         "price": price,
-        "date": date,
         "product": product?.toJson(),
       };
 }

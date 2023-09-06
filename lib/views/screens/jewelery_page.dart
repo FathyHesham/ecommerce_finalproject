@@ -88,7 +88,9 @@ class _JeweleryState extends State<Jewelery> {
                       iconSize: 30,
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/shoppingcard");
+                      },
                       icon: const Icon(Icons.shopping_cart),
                       color: Colors.black,
                       iconSize: 30,

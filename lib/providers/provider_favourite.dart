@@ -38,7 +38,7 @@ class ProviderFavourite extends ChangeNotifier {
     _dialog.show(
         message: "Lodding...",
         type: SimpleFontelicoProgressDialogType.hurricane);
-    // Get the encrypted list of preferences, and if it does not exist, create a new list
+    // Get the encoded list of preferences, and if it does not exist, create a new list
     var encodedList =
         PrefService.preferences?.getStringList(_prefrenceKey) ?? [];
     // encoded the list of favourite products

@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:ecommerce_finalproject/providers/provider_card.dart';
 import 'package:ecommerce_finalproject/providers/provider_favourite.dart';
 import 'package:ecommerce_finalproject/providers/provider_products.dart';
 import 'package:ecommerce_finalproject/views/widgets/advertisement_widget.dart';
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
         .getFavouriteProducts();
     Provider.of<ProviderProduct>(context, listen: false).getCategories();
     Provider.of<ProviderProduct>(context, listen: false).getProducts();
+    Provider.of<ProviderCard>(context, listen: false).getCardProducts();
     super.initState();
   }
 
@@ -74,7 +76,9 @@ class _HomePageState extends State<HomePage> {
                               iconSize: 30,
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/shoppingcard");
+                              },
                               icon: const Icon(Icons.shopping_cart),
                               color: const Color(0xffffe4c4),
                               iconSize: 30,

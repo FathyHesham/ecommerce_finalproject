@@ -1,3 +1,4 @@
+import 'package:ecommerce_finalproject/providers/provider_card.dart';
 import 'package:ecommerce_finalproject/providers/provider_favourite.dart';
 import 'package:ecommerce_finalproject/providers/provider_products.dart';
 import 'package:ecommerce_finalproject/services/prefservice.dart';
@@ -6,6 +7,7 @@ import 'package:ecommerce_finalproject/views/screens/favourite_page.dart';
 import 'package:ecommerce_finalproject/views/screens/home_page.dart';
 import 'package:ecommerce_finalproject/views/screens/jewelery_page.dart';
 import 'package:ecommerce_finalproject/views/screens/menclothing_page.dart';
+import 'package:ecommerce_finalproject/views/screens/shoppingcard_page.dart';
 import 'package:ecommerce_finalproject/views/screens/welcom_page.dart';
 import 'package:ecommerce_finalproject/views/screens/womanclothing_page.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +16,13 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await PrefService.init();
+  // PrefService.preferences?.clear();
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ProviderProduct()),
         ChangeNotifierProvider(create: (_) => ProviderFavourite()),
+        ChangeNotifierProvider(create: (_) => ProviderCard()),
       ],
       child: const ECommerce(),
     ),
@@ -34,11 +38,13 @@ class ECommerce extends StatefulWidget {
   State<ECommerce> createState() => _ECommerceState();
 }
 
-class _ECommerceState extends State<ECommerce> with TickerProviderStateMixin {  @override
+class _ECommerceState extends State<ECommerce> with TickerProviderStateMixin {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
+      title: "E-Commerce",
       home: const WelcomPage(),
       routes: {
         "/homepage": (_) => const HomePage(),
@@ -47,6 +53,7 @@ class _ECommerceState extends State<ECommerce> with TickerProviderStateMixin {  
         "/menclothing": (_) => const MenClothing(),
         "/womanclothing": (_) => const WomanClothing(),
         "/favouritepage": (_) => const FavouritePage(),
+        "/shoppingcard": (_) => const ShoppingCard(),
       },
     );
   }
