@@ -132,7 +132,7 @@ class _JeweleryState extends State<Jewelery> {
               List.generate(6, (index) {
                 return AnimationConfiguration.staggeredGrid(
                   position: index,
-                  duration: const Duration(milliseconds: 375),
+                  duration: const Duration(milliseconds: 400),
                   columnCount: 2,
                   child: ScaleAnimation(
                     child: FadeInAnimation(
