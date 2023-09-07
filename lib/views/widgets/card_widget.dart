@@ -114,7 +114,7 @@ class _CardWidgetState extends State<CardWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   children: [
                                     Row(
@@ -163,11 +163,11 @@ class _CardWidgetState extends State<CardWidget> {
                                           ),
                                           child: IconButton(
                                               onPressed: () => providerCard
-                                                  .changeItemQuantity(
-                                                      widget.orderItem.product
-                                                              ?.id ??
-                                                          0,
-                                                      decrease: false),
+                                                      .changeItemQuantity(
+                                                    widget.orderItem.product
+                                                            ?.id ??
+                                                        0,
+                                                  ),
                                               icon: const Icon(
                                                 Icons.add,
                                                 color: Colors.black,

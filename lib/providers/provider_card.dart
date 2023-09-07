@@ -121,7 +121,7 @@ class ProviderCard extends ChangeNotifier {
   }
 
   //! create func. to make change quantity of item
-  void changeItemQuantity(int productID, {required bool decrease}) async {
+  void changeItemQuantity(int productID, {bool decrease = false}) async {
     // create the dialog to loading...
     _dialog.show(
         message: "Lodding...",
