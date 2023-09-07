@@ -12,7 +12,10 @@ class ProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetailsPage(product: product))),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) => ProductDetailsPage(product: product))),
       child: Container(
           height: 220,
           width: 170,
@@ -34,8 +37,8 @@ class ProductWidget extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'sale',
-                        style:
-                            TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),
@@ -64,7 +67,8 @@ class ProductWidget extends StatelessWidget {
                         child: FittedBox(
                           child: CircularProgressIndicator(),
                         )),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
               ),

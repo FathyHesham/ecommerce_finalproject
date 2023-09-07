@@ -4,6 +4,7 @@ import 'package:ecommerce_finalproject/providers/provider_favourite.dart';
 import 'package:ecommerce_finalproject/providers/provider_products.dart';
 import 'package:ecommerce_finalproject/views/widgets/createproduct_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -28,84 +29,86 @@ class _ElectronicsPageState extends State<ElectronicsPage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                height: 70,
-                decoration: const BoxDecoration(
-                    color: Color(0xffffe4c4),
-                    borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(15),
-                        bottomLeft: Radius.circular(15))),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: const Icon(Icons.arrow_back_ios_new_outlined),
-                    ),
-                    const SizedBox(
-                      width: 70,
-                    ),
-                    SizedBox(
-                      width: 130.0,
-                      child: DefaultTextStyle(
-                        style: const TextStyle(
-                          fontSize: 25,
+        body: AnimationLimiter(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  height: 70,
+                  decoration: const BoxDecoration(
+                      color: Color(0xffffe4c4),
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(15),
+                          bottomLeft: Radius.circular(15))),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.arrow_back_ios_new_outlined),
+                      ),
+                      const SizedBox(
+                        width: 70,
+                      ),
+                      SizedBox(
+                        width: 130.0,
+                        child: DefaultTextStyle(
+                          style: const TextStyle(
+                            fontSize: 25,
+                            color: Colors.black,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 7.0,
+                                color: Colors.white,
+                                offset: Offset(0, 0),
+                              ),
+                            ],
+                          ),
+                          child: AnimatedTextKit(
+                            repeatForever: true,
+                            animatedTexts: [
+                              FlickerAnimatedText('Electronics'),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/favouritepage");
+                        },
+                        icon: const Icon(Icons.favorite),
+                        color: Colors.red,
+                        iconSize: 30,
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.search,
                           color: Colors.black,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 7.0,
-                              color: Colors.white,
-                              offset: Offset(0, 0),
-                            ),
-                          ],
                         ),
-                        child: AnimatedTextKit(
-                          repeatForever: true,
-                          animatedTexts: [
-                            FlickerAnimatedText('Electronics'),
-                          ],
-                        ),
+                        iconSize: 30,
                       ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/favouritepage");
-                      },
-                      icon: const Icon(Icons.favorite),
-                      color: Colors.red,
-                      iconSize: 30,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.search,
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/shoppingcard");
+                        },
+                        icon: const Icon(Icons.shopping_cart),
                         color: Colors.black,
-                      ),
-                      iconSize: 30,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/shoppingcard");
-                      },
-                      icon: const Icon(Icons.shopping_cart),
-                      color: Colors.black,
-                      iconSize: 30,
-                    )
-                  ],
+                        iconSize: 30,
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: getProductsWidget(),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: getProductsWidget(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -131,7 +134,20 @@ class _ElectronicsPageState extends State<ElectronicsPage> {
                   .products
                   ?.map((e) => ProductWidget(product: e))
                   .toList() ??
-              List.generate(6, (index) => ProductWidget(product: Product())),
+              List.generate(6, (index) {
+                return AnimationConfiguration.staggeredGrid(
+                  position: index,
+                  duration: const Duration(milliseconds: 375),
+                  columnCount: 2,
+                  child: ScaleAnimation(
+                    child: FadeInAnimation(
+                      child: ProductWidget(
+                        product: Product(),
+                      ),
+                    ),
+                  ),
+                );
+              }),
         ),
       );
     }

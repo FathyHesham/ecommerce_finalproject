@@ -3,6 +3,7 @@ import 'package:ecommerce_finalproject/models/prodects_model.dart';
 import 'package:ecommerce_finalproject/providers/provider_products.dart';
 import 'package:ecommerce_finalproject/views/widgets/createproduct_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -132,7 +133,20 @@ class _WomanClothingState extends State<WomanClothing> {
                   .products
                   ?.map((e) => ProductWidget(product: e))
                   .toList() ??
-              List.generate(6, (index) => ProductWidget(product: Product())),
+              List.generate(6, (index) {
+                return AnimationConfiguration.staggeredGrid(
+                  position: index,
+                  duration: const Duration(milliseconds: 375),
+                  columnCount: 2,
+                  child: ScaleAnimation(
+                    child: FadeInAnimation(
+                      child: ProductWidget(
+                        product: Product(),
+                      ),
+                    ),
+                  ),
+                );
+              }),
         ),
       );
     }

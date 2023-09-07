@@ -64,7 +64,7 @@ class _CardWidgetState extends State<CardWidget> {
                           height: 15,
                           width: 15,
                           child: FittedBox(
-                            child: CircularProgressIndicator(),
+                            child: CircularProgressIndicator.adaptive(),
                           ),
                         ),
                         errorWidget: (context, url, error) =>
